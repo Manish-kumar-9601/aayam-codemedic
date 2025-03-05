@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../../components/Button";
 import InputEditor from "../../components/InputEditor";
 import OutputEditor from "../../components/OutputEditor";
-import { InputTheme, OutputTheme } from "@/constants";
+import { myOutputStyle } from "@/constants";
 import axios from "axios";
 
 const Commenter = () =>
@@ -13,6 +13,8 @@ const Commenter = () =>
     const [loading, setLoading] = useState(false)
     const [resOutput, setResOutput] = useState('')
     const [error, setError] = useState('')
+    const myStyle={paddingBottom:'0px',borderColor:'white',borderBottomWidth:'6px',borderTopWidth:'6px',borderTopRightRadius:'10px',borderBottomLeftRadius:'10px',borderBottomRightRadius:'10px'}
+ 
     const commentHandler =async () =>
     {
         if (value == 'Enter Code' || !value)
@@ -24,7 +26,7 @@ const Commenter = () =>
                 setError('')
                 setLoading(true)
                 console.log(value);
-                const response = await axios.post('/api/comment', { value }).then((res) =>
+                const response = await axios.post('/api/comment', { value ,codeLang:editorLang}).then((res) =>
                 {
                     console.log(res);
                     setResOutput(res.data?.commented)
@@ -35,16 +37,16 @@ const Commenter = () =>
                 console.log(error);
             }
     }
-    console.log(resOutput);
+    
     return (
         <>
-            <InputEditor setEditorLang={setEditorLang} setValue={setValue} myTheme={InputTheme} />
+            <InputEditor setEditorLang={setEditorLang} setValue={setValue} myStyle={myStyle} />
             <Button handler={commentHandler} btnName={loading ? 'Commenting' : 'Comment'} />
             <p className="text-red-500" >
                 {error}
             </p>
             {
-                 loading && !resOutput?<></>: <OutputEditor editorLang={editorLang} myTheme={OutputTheme} responseValue={resOutput} />  
+                 !resOutput ?<></>: <OutputEditor editorLang={editorLang} myOutputStyle={myOutputStyle} responseValue={resOutput}  />   
             }
         </>
     )

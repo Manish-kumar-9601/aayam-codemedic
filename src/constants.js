@@ -16,12 +16,12 @@ export const  InputTheme= createTheme({
         lineHighlight: '#424242',
     },
     styles: [
-        { tag: t.comment, color: '#787b80' },
+        { tag: t.comment, color: '#008a02' },
         { tag: t.lineComment, color: '#f57575' },
         { tag: t.definition(t.typeName), color: '#194a7b' },
         { tag: t.typeName, color: '#194a7b' },
-        { tag: t.tagName, color: '#008a02' },
-        { tag: t.variableName, color: '#4f38ff' },
+        { tag: t.tagName, color: '#008a06' },
+        { tag: t.variableName, color: '#008a06' },
     ],
 });
 export const  OutputTheme= createTheme({
@@ -45,6 +45,16 @@ export const  OutputTheme= createTheme({
         { tag: t.definition(t.typeName), color: '#194a7b' },
         { tag: t.typeName, color: '#194a7b' },
         { tag: t.tagName, color: '#008a02' },
-        { tag: t.variableName, color: '#4f38ff' },
+        { tag: t.variableName, color: '#008a02' },
     ],
 });
+
+export const myOutputStyle = {
+    paddingBottom: '0px',
+    borderColor: 'white',
+    borderWidth: '6px',  
+    borderTopRightRadius: '10px',
+    borderTopLeftRadius: '10px',
+    borderBottomLeftRadius: '10px',
+    borderBottomRightRadius: '10px'
+  };

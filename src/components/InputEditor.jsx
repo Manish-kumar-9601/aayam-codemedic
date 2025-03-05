@@ -1,8 +1,8 @@
-﻿import CodeMirror from '@uiw/react-codemirror';
+﻿import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import { useState } from 'react';
 import { langNames, loadLanguage } from '@uiw/codemirror-extensions-langs';
-import { xcodeDark } from '@uiw/codemirror-theme-xcode';
-const InputEditor = ({ myTheme, setValue, setEditorLang }) =>
+import { xcodeDark, xcodeLight } from '@uiw/codemirror-theme-xcode';
+const InputEditor = ({ myStyle, setValue, setEditorLang }) =>
 {
 
     const [lang, setLang] = useState(langNames[0])
@@ -13,25 +13,29 @@ const InputEditor = ({ myTheme, setValue, setEditorLang }) =>
     }
     return (
         <>
-            <select onChange={langHandler} className='mx-5' >
-                {langNames.map((language, index) => (
-                    <option value={language} key={index} >{language}</option>
+            
+
+
+            <select onChange={langHandler} className=' border-b-0 rounded-t-xl px-1 py-2 bg-white text-black ' >
+                {langNames.sort().map((language, index) => (
+                    <option className='text-black' value={language} key={index} >{language}</option>
                 ))}
             </select>
             <CodeMirror
-                
-                value="Enter Code"
-                height="200px"
-                style={{padding:'0px'}}
-                theme={myTheme ? myTheme : xcodeDark}
-                extensions={[loadLanguage('markdown')]}
-            
+            placeholder={'Enter Code'}
+                className='border-2 '
+                height="300px"
+                style={myStyle}
+                theme={  xcodeLight}
+                extensions={[loadLanguage(lang),EditorView.lineWrapping]}
                 onChange={(value, viewUpdate) =>
                 {
                     setValue(value)
+                    console.log(viewUpdate);
                 }}
-            />
-        </>
+                />
+                </>
+        
     )
 }
 export default InputEditor

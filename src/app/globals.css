@@ -17,8 +17,15 @@
     --foreground: #ededed;
   }
 }
+
 body {
-  background: var(--background);
+  background: linear-gradient(115deg, #242424, #ffffff);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;  
+  padding: 0 2rem ;
 }
+
+/* .bg-custom-gradient {
+ 
+  background: linear-gradient(115deg, #242424, #ffffff);
+} */

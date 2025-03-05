@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { openai } from "../constant";
 
-export async function POST(req=NextRequest,res=NextResponse) {
-    const { value } = await req.json()
+export async function POST (req = NextRequest, res = NextResponse)
+{
+    const { value, codeLang } = await req.json()
     console.log(value);
     if (!value) return NextResponse.json({ error: "No code provided" });
 
@@ -17,7 +18,7 @@ export async function POST(req=NextRequest,res=NextResponse) {
                 },
                 {
                     role: "user",
-                    content: `this code:\n\n${value}`
+                    content: `this code:\n\n${value} and code language is ${codeLang}`
                 }
             ],
         });
