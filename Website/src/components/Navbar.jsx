@@ -12,12 +12,12 @@ const Navbar = () => {
           <div className="w-14 p-2 max-w-full  flex justify-center items-center ">
             <Link href="/" className="block items-center">
               <img
-                src="codeMedic logo.svg"
+                src="codeMedic_logo.png"
                 alt="logo"
                 className="dark:hidden w-16"
               />
               <img
-                src="codeMedic logo.svg"
+                src="codeMedic_logo.png"
                 alt="logo"
                 className="hidden dark:block w-16"
               />
